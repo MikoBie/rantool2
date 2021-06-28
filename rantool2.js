@@ -681,7 +681,7 @@ function trialsLoopBegin(trialsLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   trials = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 5, method: TrialHandler.Method.SEQUENTIAL,
+    nReps: 120, method: TrialHandler.Method.SEQUENTIAL,
     extraInfo: expInfo, originPath: undefined,
     trialList: undefined,
     seed: undefined, name: 'trials'
