@@ -105,7 +105,7 @@ function updateInfo() {
 
   // add info from the URL:
   util.addInfoFromUrl(expInfo);
-  
+  psychoJS.setRedirectUrls('https://app.prolific.co/submissions/complete?cc=89221FCB', '');
   return Scheduler.Event.NEXT;
 }
 
