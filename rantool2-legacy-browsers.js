@@ -98,6 +98,8 @@ function updateInfo() {
   return Scheduler.Event.NEXT;
 }
 
+var id_str;
+var id_num;
 var condition;
 var instruction_file_path;
 var instruction_file_path2;
@@ -152,7 +154,10 @@ function experimentInit() {
       instruction_file_path2 = 'resources/instruction2_m.png';
       instruction_file_path3 = 'resources/instruction3_m.png';
   }
-  if ((expInfo['id*'] % 2)) {
+  id_str = expInfo['id*'];
+  id_num = id_str.match(/\d/g);
+  id_num = id_num.join('');
+  if ((id_num % 2)) {
       condition = 'visible';
   } else {
       condition = 'invisible';
