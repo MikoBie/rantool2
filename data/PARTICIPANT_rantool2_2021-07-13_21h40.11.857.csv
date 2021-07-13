@@ -1,0 +1,4 @@
+key_resp_5.keys,key_resp_5.corr,key_resp_5.rt,trials.thisRepN,trials.thisTrialN,trials.thisN,trials.thisIndex,trials.ran,id*,Płeć*,Wiek*,date,expName,psychopyVersion,OS,frameRate,id,STUDY_ID,SESSION_ID
+0,,,0,0,0,0,1,5f19dfd666d72d092db69ed6,Mężczyzna,21,2021-07-13_21h40.11.857,rantool2,2021.1.4,Win32,60.0528465,5f19dfd666d72d092db69ed6,60d9d14f4a8a35a482e0d9bf,60edebb87c845a5856d5bf9f
+0,,,1,0,1,0,1,5f19dfd666d72d092db69ed6,Mężczyzna,21,2021-07-13_21h40.11.857,rantool2,2021.1.4,Win32,60.0528465,5f19dfd666d72d092db69ed6,60d9d14f4a8a35a482e0d9bf,60edebb87c845a5856d5bf9f
+0,,,2,0,2,0,1,5f19dfd666d72d092db69ed6,Mężczyzna,21,2021-07-13_21h40.11.857,rantool2,2021.1.4,Win32,60.0528465,5f19dfd666d72d092db69ed6,60d9d14f4a8a35a482e0d9bf,60edebb87c845a5856d5bf9f
