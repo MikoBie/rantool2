@@ -1094,7 +1094,7 @@ function trialRoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     routineTimer.add(2.000000);
     // update component parameters for each repeat
-    key_resp_5.keys = undefined;
+    key_resp_5.keys = 0;
     key_resp_5.rt = undefined;
     _key_resp_5_allKeys = [];
     keysLenOld = 0;
