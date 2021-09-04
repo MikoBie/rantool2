@@ -66,11 +66,11 @@ psychoJS.start({
   expInfo: expInfo,
   resources: [
     {'name': 'resources/instruction_m.png', 'path': 'resources/instruction_m.png'},
-    {'name': 'resources/instruction2_m.png', 'path': 'resources/instruction2_m.png'},
-    {'name': 'resources/instruction3_m.png', 'path': 'resources/instruction3_m.png'},
+    {'name': 'resources/instruction3_m.png', 'path': 'resources/instruction2_m.png'},
+    {'name': 'resources/instruction2_m.png', 'path': 'resources/instruction3_m.png'},
     {'name': 'resources/instruction_k.png', 'path': 'resources/instruction_k.png'},
-    {'name': 'resources/instruction2_k.png', 'path': 'resources/instruction2_k.png'},
-    {'name': 'resources/instruction3_k.png', 'path': 'resources/instruction3_k.png'},
+    {'name': 'resources/instruction3_k.png', 'path': 'resources/instruction2_k.png'},
+    {'name': 'resources/instruction2_k.png', 'path': 'resources/instruction3_k.png'},
     {'name': 'resources/compare_data.csv', 'path': 'resources/compare_data.csv'}
   ]
 });
