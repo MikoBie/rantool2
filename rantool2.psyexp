@@ -766,21 +766,6 @@
   <Flow>
     <Routine name="Instruction"/>
     <Routine name="Part1"/>
-    <Routine name="Instruction2"/>
-    <LoopInitiator loopType="TrialHandler" name="trials">
-      <Param name="Selected rows" updates="None" val="" valType="str"/>
-      <Param name="conditions" updates="None" val="None" valType="str"/>
-      <Param name="conditionsFile" updates="None" val="" valType="file"/>
-      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="isTrials" updates="None" val="True" valType="bool"/>
-      <Param name="loopType" updates="None" val="sequential" valType="str"/>
-      <Param name="nReps" updates="None" val="120" valType="num"/>
-      <Param name="name" updates="None" val="trials" valType="code"/>
-      <Param name="random seed" updates="None" val="" valType="code"/>
-    </LoopInitiator>
-    <Routine name="trial"/>
-    <LoopTerminator name="trials"/>
-    <Routine name="Part2"/>
     <Routine name="Instruction3"/>
     <LoopInitiator loopType="TrialHandler" name="trials_2">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
@@ -795,5 +780,20 @@
     </LoopInitiator>
     <Routine name="trial2"/>
     <LoopTerminator name="trials_2"/>
+    <Routine name="Part2"/>
+    <Routine name="Instruction2"/>
+    <LoopInitiator loopType="TrialHandler" name="trials">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="file"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="loopType" updates="None" val="sequential" valType="str"/>
+      <Param name="nReps" updates="None" val="120" valType="num"/>
+      <Param name="name" updates="None" val="trials" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
+    <Routine name="trial"/>
+    <LoopTerminator name="trials"/>
   </Flow>
 </PsychoPy2experiment>
