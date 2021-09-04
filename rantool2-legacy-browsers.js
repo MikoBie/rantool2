@@ -1,5 +1,5 @@
 ﻿/***************** 
- * Rantool2 Test *
+ * Rantool2 *
  *****************/
 
 // init psychoJS:
@@ -17,7 +17,7 @@ psychoJS.openWindow({
 
 // store info about the experiment session:
 let expName = 'rantool2';  // from the Builder filename that created this script
-let expInfo = {'id': '', 'Sex': ['male', 'female'], 'Age*': ''};
+let expInfo = {'id*': '', 'Płeć*': ['Kobieta', 'Mężczyzna'], 'Wiek*': ''};
 
 // Start code blocks for 'Before Experiment'
 // schedule the experiment:
@@ -65,10 +65,13 @@ psychoJS.start({
   expName: expName,
   expInfo: expInfo,
   resources: [
-    {'name': 'resources/compare_data.csv', 'path': 'resources/compare_data.csv'},
     {'name': 'resources/instruction_m.png', 'path': 'resources/instruction_m.png'},
     {'name': 'resources/instruction2_m.png', 'path': 'resources/instruction2_m.png'},
-    {'name': 'resources/instruction3_m.png', 'path': 'resources/instruction3_m.png'}
+    {'name': 'resources/instruction3_m.png', 'path': 'resources/instruction3_m.png'},
+    {'name': 'resources/instruction_k.png', 'path': 'resources/instruction_k.png'},
+    {'name': 'resources/instruction2_k.png', 'path': 'resources/instruction2_k.png'},
+    {'name': 'resources/instruction3_k.png', 'path': 'resources/instruction3_k.png'},
+    {'name': 'resources/compare_data.csv', 'path': 'resources/compare_data.csv'}
   ]
 });
 
@@ -91,11 +94,16 @@ function updateInfo() {
 
   // add info from the URL:
   util.addInfoFromUrl(expInfo);
-  
+  psychoJS.setRedirectUrls('https://app.prolific.co/submissions/complete?cc=89221FCB', ''); 
   return Scheduler.Event.NEXT;
 }
 
-
+var id_str;
+var id_num;
+var condition;
+var instruction_file_path;
+var instruction_file_path2;
+var instruction_file_path3;
 var InstructionClock;
 var key_resp;
 var image_2;
@@ -138,11 +146,29 @@ function experimentInit() {
   InstructionClock = new util.Clock();
   key_resp = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
+  if ((expInfo["Płeć*"] === "Kobieta")) {
+    instruction_file_path = "resources/instruction_k.png";
+    instruction_file_path2 = "resources/instruction2_k.png";
+    instruction_file_path3 = "resources/instruction3_k.png";
+  } else {
+    instruction_file_path = "resources/instruction_m.png";
+    instruction_file_path2 = "resources/instruction2_m.png";
+    instruction_file_path3 = "resources/instruction3_m.png";
+  }
+  id_str = expInfo['id*'];
+  id_num = id_str.match(/\d/g);
+  id_num = id_num.join('');
+  if ((id_num % 2)) {
+      condition = 'visible';
+  } else {
+      condition = 'invisible';
+  }
+
   image_2 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_2', units : undefined, 
-    image : 'resources/instruction_m.png', mask : undefined,
-    ori : 0.0, pos : [0, 0], size : [1.25, 1],
+    image : instruction_file_path, mask : undefined,
+    ori : 0.0, pos : [0, -.4], size : [2.4,2.4],
     color : new util.Color([1, 1, 1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
     texRes : 128.0, interpolate : true, depth : -1.0 
@@ -165,8 +191,8 @@ function experimentInit() {
   image_4 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_4', units : undefined, 
-    image : 'resources/instruction3_m.png', mask : undefined,
-    ori : 0.0, pos : [0, 0], size : [1.25, 1],
+    image : instruction_file_path2, mask : undefined,
+    ori : 0.0, pos : [0, -.4], size : [2.4,2.4],
     color : new util.Color([1, 1, 1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
     texRes : 128.0, interpolate : true, depth : 0.0 
@@ -230,8 +256,8 @@ function experimentInit() {
   image = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image', units : undefined, 
-    image : 'resources/instruction2_m.png', mask : undefined,
-    ori : 0.0, pos : [0, 0], size : [1.25, 1],
+    image : instruction_file_path3, mask : undefined,
+    ori : 0.0, pos : [0, -.4], size : [2.4,2.4],
     color : new util.Color([1, 1, 1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
     texRes : 128.0, interpolate : true, depth : -1.0 
@@ -720,6 +746,8 @@ function trialsLoopEnd() {
 var _key_resp_7_allKeys;
 var left;
 var right;
+var timer;
+var time_on_slide;
 var trial2Components;
 function trial2RoutineBegin(snapshot) {
   return function () {
@@ -733,12 +761,16 @@ function trial2RoutineBegin(snapshot) {
     key_resp_7.keys = undefined;
     key_resp_7.rt = undefined;
     _key_resp_7_allKeys = [];
-    if (((trials_2.thisN - trials_2.thisIndex) % 2)) {
-        left = series_0;
-        right = series_1;
+    timer = new util.Clock();
+    timer.reset = ({'newT' : 0 });
+    time_on_slide = 0;
+
+    if (((snapshot.thisN - id) % 2)) {
+      left = series_0;
+      right = series_1;
     } else {
-        left = series_1;
-        right = series_0;
+      left = series_1;
+      right = series_0;
     }
     
     // keep track of which components have finished
@@ -780,7 +812,7 @@ function trial2RoutineEachFrame(snapshot) {
     }
     
     if (text_9.status === PsychoJS.Status.STARTED){ // only update if being drawn
-      text_9.setText(id, false);
+      text_9.setText(time_on_slide, false);
     }
     
     // *text_10* updates
@@ -846,7 +878,7 @@ function trial2RoutineEachFrame(snapshot) {
         continueRoutine = false;
       }
     }
-    
+    time_on_slide = round((5 - timer.getTime()),0);
     // check if the Routine should terminate
     if (!continueRoutine) {  // a component has requested a forced-end of Routine
       return Scheduler.Event.NEXT;
@@ -1147,13 +1179,13 @@ function trialRoutineEachFrame(snapshot) {
   }
 
     if (key_resp_5.status === PsychoJS.Status.STARTED) {
-      let theseKeys = key_resp_5.getKeys({keyList: ['period', 'slash'], waitRelease: false});
+      let theseKeys = key_resp_5.getKeys({keyList: ['period', 'comma'], waitRelease: false});
       _key_resp_5_allKeys = _key_resp_5_allKeys.concat(theseKeys);
       if (_key_resp_5_allKeys.length > 0) {
         key_resp_5.keys = _key_resp_5_allKeys.map((key) => key.name);  // storing all keys
         key_resp_5.rt = _key_resp_5_allKeys.map((key) => key.rt);
         // was this correct?
-        if (key_resp_5.keys == "'period', 'slash'") {
+        if (key_resp_5.keys == "'period', 'comma'") {
             key_resp_5.corr = 1;
         } else {
             key_resp_5.corr = 0;
@@ -1163,10 +1195,10 @@ function trialRoutineEachFrame(snapshot) {
     
     keysLen = key_resp_5.keys.length;
     if ((keysLen > keysLenOld)) {
-        if ((key_resp_5.keys[(keysLen - 1)] === "slash")) {
+        if ((key_resp_5.keys[(keysLen - 1)] === "period")) {
             text = "R";
         } else {
-            if ((key_resp_5.keys[(keysLen - 1)] === "period")) {
+            if ((key_resp_5.keys[(keysLen - 1)] === "comma")) {
                 text = "O";
             }
         }
@@ -1352,7 +1384,7 @@ function trialRoutineEnd(snapshot) {
     });
     // was no response the correct answer?!
     if (key_resp_5.keys === undefined) {
-      if (['None','none',undefined].includes("'period', 'slash'")) {
+      if (['None','none',undefined].includes("'period', 'comma'")) {
          key_resp_5.corr = 1;  // correct non-response
       } else {
          key_resp_5.corr = 0;  // failed to respond (incorrectly)
