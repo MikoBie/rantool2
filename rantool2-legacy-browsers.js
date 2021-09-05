@@ -1194,7 +1194,7 @@ function trialRoutineEachFrame(snapshot) {
     }
     
     keysLen = key_resp_5.keys.length;
-    if ((keysLen > keysLenOld)) {
+    if ((keysLen > keysLenOld) && (condition === 'visible')) {
         if ((key_resp_5.keys[(keysLen - 1)] === "period")) {
             text = "R";
         } else {
